@@ -1,0 +1,36 @@
+var userInputStore = [];
+var randStore = [];
+localStorage.setItem("winCount",0);
+for(let count =1; count<=5; count++ ) {
+var rand = Math.floor((Math.random()*(100-1)+1));
+randStore.push(rand);
+var userInput = parseFloat(prompt("Enter a number between 1 and 100"));
+userInputStore.push(userInput);
+if (userInput <1 || userInput > 100) {
+alert ("Please enter a valid number between 1 and 100"); }
+else if (rand == userInput) {
+alert("you win");
+localStorage.setItem("winCount",localStorage.getItem("winCount")+1);
+}
+else {
+alert("you loose"); }
+}
+console.log("you palyed 5 rounds and won " + localStorage.getItem("winCount") + " times" );
+
+displaySrt = ""
+for (count=0; count< userInputStore.length; count++){
+if (count !== 0) {
+displaySrt += ","; }
+displaySrt += userInputStore[count] }
+
+console.log("Here are the values you entered " + displaySrt );
+
+displaySrt = ""
+for (count=0; count< randStore.length; count++){
+if (count !== 0) {
+displaySrt += ","; }
+displaySrt += randStore[count] }
+
+console.log("Here are the luck number generated for you " + displaySrt);
+
+localStorage.removeItem("winCount");
