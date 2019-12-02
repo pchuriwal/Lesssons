@@ -1,0 +1,27 @@
+/* 1. You have to take one array of users
+2. Take one input from user as name
+3. Your task, if user is part of array then print the array,  say welcome + name
+else add that user to the array and print array and welcome message. 
+Save this array in localstorage so that any time any new user is added then it can be checked and welcome message printed.
+*/
+
+var users = ["John", "Eva", "Lalithya"]
+var input = prompt("Enter your name")
+
+input = input.charAt(0).toUpperCase() + input.substr(1,input.length-1).toLowerCase();
+
+var flag = false;
+for (var i=0; i<users.length; i++) {
+	if(input.toUpperCase() == users[i].toUpperCase()) {
+	console.log ("Welcome "+ input+"\n");
+  console.log(users)
+ 	flag = true;
+	}
+}
+
+if (!flag) {
+users.push(input)
+localStorage.setItem("users", users)
+console.log ("Welcome "+ input+"\n");
+ console.log(users)
+}
